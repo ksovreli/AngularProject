@@ -1,8 +1,246 @@
-img{
-    width: 200px;
+main{
+  display: flex;
+  justify-content: center;
+  background-image: url(https://restaurant.stepprojects.ge/images/p_bg.jpg);
+
+  aside{
+    width: 230px;
+    padding: 20px;
+    border-radius: 12px;
+    font-family: Arial, sans-serif;
+
+    .asidebox{
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      background-color: #f9f9f9;
+      border: 1px solid #CFCFCF;
+      border-radius: 12px;
+      transition: transform 0.3s box-shadow 0.3s;
+      padding: 20px;
+      text-align: center;
+      width: 230px;
+
+      input[type="range"]{
+        width: 100%;
+        height: 10px;
+        accent-color: red;
+        background-color: #ddd;
+        border-radius: 5px;
+        cursor: pointer;
+        appearance: none;
+      }
+
+      label{
+        font-size: 16px;
+        color: #333;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+    }
+  }
+
+  .parent{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    padding: 20px;
+    width: 70%;
+
+    .box{
+      width: 250px;
+      background-color: #f9f9f9;
+      border: 1px solid #CFCFCF;
+      border-radius: 12px;
+      transition: transform 0.3s, box-shadow 0.3s;
+      padding: 20px;
+      text-align: center;
+
+      .data{
+        display: flex;
+        flex-direction: column;
+        gap: 7px;
+      }
+
+      img{
+        width: 100%;
+        height: 200px;
+        border-radius: 8px;
+        margin-bottom: 15px;
+      }
+
+      h2{
+        font-size: 19px;
+        color: #333;
+        margin-bottom: 10px;
+        font-weight: bold;
+      }
+
+      p{
+        font-size: 16px;
+        color: #777;
+        margin: 5px 0;
+      }
+
+      &:hover{
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+      }
+    }
+
+    .container{
+      display: flex;
+      justify-content: space-between;
+
+      button{
+        background-image: url(https://restaurant.stepprojects.ge/images/bt_border.png);
+        background-repeat: no-repeat;
+        width: 108px;
+        height: 42px;
+        border: none;
+        
+        &:hover{
+          background-color: red;
+          color: white;
+          transition: 0.4s;
+          border-radius: 10px;
+        }
+      }
+
+      
+    }
+  }
 }
 
-.parent{
+.category{
+  background-image: url(https://restaurant.stepprojects.ge/images/p_bg.jpg);
+  padding-top: 50px;
+
+.nav{
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+
+  ul{
+    list-style-type: none;
     display: flex;
+    gap: 30px;
+
+    li{
+      font-size: 21px;
+      
+      a{
+        text-decoration: none;
+        color: black;
+        cursor: pointer;
+
+        &:hover{
+          color: red;
+          transition: 0.5s;
+        }
+      }
+    }
+  }
+
+  .bottom{
+    width: 1150px;
+    margin: auto;
+    height: 6px;
+    background-image: url(https://restaurant.stepprojects.ge/images/border.png);
+    background-position: bottom;
+    background-repeat: no-repeat;
+  }
+}
+
+h2{
+  font-size: 36px;
+  line-height: 36px;
+  color: #000000;
+  font-weight: 700;
+  font-family: "Roboto Slab", serif;
+  text-align: center;
+}
+}
+
+
+.banner {
+  background-image: url('https://restaurant.stepprojects.ge/images/inner_banner.jpg');
+  width: 100%;
+  background-position: top;
+  height: 389px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+}
+
+button{
+  padding: 7px;
+}
+
+h1{
+  font-size: 30px;
+  line-height: 70px;
+  color: #ffffff;
+  font-weight: 800;
+  text-align: center;
+  text-transform: capitalize;
+  font-family: 'Roboto Slab', serif;
+  margin-bottom: 48px;
+  text-shadow: 0px 0px 26.97px rgba(0, 0, 0, 0.75)
+}
+
+@media screen and (max-width: 1050px){
+  main{
+    flex-direction: column;
+    align-items: center;
+  
+    .parent{
+      .box{
+        img{
+          height: auto;
+        }
+        .container{
+          flex-direction: column;
+          align-items: center;
+        }
+      }
+    }
+  }
+
+  aside{
     width: 50%;
+    display: flex;
+    align-items: center;
+  }
+
+  .nav{
+
+  ul{
+    flex-direction: column;
+    text-align: center;
+  }
+
+}
+
+}
+
+@media screen and (max-width: 500px){
+
+  .category{
+
+  h2{
+    font-size: 25px;
+  }
+}
+}
+
+
+.active{
+  border-bottom: 3px solid red;
+  font-weight: bold;
 }

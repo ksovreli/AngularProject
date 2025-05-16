@@ -1,0 +1,34 @@
+.footerwrapper{
+  position: relative;
+
+  footer{
+  width: 100%;
+  height: 8vh;
+  background: #e60000;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+
+  p{
+    color: #fff;
+    font-size: 14px;
+}
+}
+
+.footerborder{
+    width: 100%;
+    height: 6px;
+    background-image: url(https://restaurant.stepprojects.ge/images/copyright_border.png);
+    background-repeat: no-repeat;
+    position: absolute;
+    top: -4px;
+    left: 0;
+    right: 0;
+}
+}
+
+
+
+

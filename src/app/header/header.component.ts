@@ -6,7 +6,7 @@ import { ApiService } from '../services/api.service';
 
 @Component({
   selector: 'app-header',
-  imports: [RouterModule, CommonModule],
+  imports: [RouterModule, CommonModule,],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
@@ -19,5 +19,11 @@ export class HeaderComponent {
     }
   
     productsArr : Product[] = []
+    welcomeUsername!: string
+
+    greeting!: string
+    getFromChild(text : any){
+      this.greeting = text
+    }
 
 }

@@ -3,12 +3,11 @@ export class Product {
     id!: number
     image?: string
     name?: string
-    nuts?: boolean = true
+    nuts?: boolean = false
+    vegetarian?: boolean = false
     price?: number
     spiciness?: number
-    vegetarian?: boolean = false
 }
-
 
 
 // export class Product {
