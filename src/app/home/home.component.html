@@ -23,38 +23,34 @@
         <label>Spiciness: {{rangeValue}}</label>
         <input type="range" [(ngModel)]="rangeValue" min="0" max="4">
     
-        <label>
-          <input type="checkbox">
-          No nuts
-        </label>
+        <label><input type="checkbox" [(ngModel)]="nuts">No nuts</label>
     
-        <label>
-          <input type="checkbox">
-          Vegetarian only
-        </label>
+        <label><input type="checkbox" [(ngModel)]="vegetarian">Vegetarian only</label>
     
     <app-button text="Reset"></app-button>
-    <app-button text="Apply Filter"></app-button>
+    <app-button (click)="filter()" text="Apply Filter"></app-button>
 
   
       </div>
     </aside>
     
-    
-    <div class="parent">
-      <div class="box"  *ngFor="let el of productsArr">
-        <img [src]="el.image" alt="">
-        <div class="data">
-        <h2>{{el.name}}</h2>
-        <p>spiciness: {{el.spiciness}}</p>
-        <p>nuts: {{el.nuts}} vegetarian: {{el.vegetarian}}</p>
-        <div class="container">
-          <h3>${{el.price}}</h3>
-          <button (click)="addTocart(el.id, el.price!)">Add To Cart</button>   
-          </div>
-        </div>
+<div class="parent">
+  <div class="box" *ngFor="let el of productsArr">
+    <img [src]="el.image" alt="">
+    <div class="data">
+      <h2>{{el.name}}</h2>
+      <p>Spiciness: {{el.spiciness}}</p>
+      <p>
+        Nuts: {{el.nuts ? 'Yes' : 'No'}} | Vegetarian: {{el.vegetarian ? 'Yes' : 'No'}}
+      </p>
+      <div class="container">
+        <h3>$ {{el.price}}</h3>
+        <button (click)="addToCart(el.id, el.price!)">Add To Cart</button>
       </div>
     </div>
+  </div>
+</div>
+
 
     
   </main>

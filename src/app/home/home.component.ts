@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
 import { ApiService } from '../services/api.service';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { Product } from '../models/product';
 import { FormsModule } from '@angular/forms';
 import { Categories } from '../models/categories';
 import { ButtonComponent } from "../button/button.component";
+import Swal from 'sweetalert2';
+import { Filter } from '../models/filter';
 
 @Component({
   selector: 'app-home',
@@ -16,9 +18,12 @@ import { ButtonComponent } from "../button/button.component";
 export class HomeComponent {
 
   rangeValue: number = 0
+  nuts: boolean = false
+  vegetarian: boolean = false
+  spiciness: number = 0
   selectedCategoryId: number = 0
 
-  constructor(private api : ApiService){
+  constructor(private api : ApiService, private route : Router){
 
   }
 
@@ -44,15 +49,41 @@ export class HomeComponent {
   })
 }
 
-addTocart(productId: number, price: number) {
+addToCart(productId: number, price: number) {
+  if(localStorage.getItem("token") != null || localStorage.getItem("token") != undefined){
   let postObj = {
     quantity: 1,
     price: price,
     productId: productId
   }
-
-  this.api.cart(postObj).subscribe((resp: any) => {
+    this.api.cart(postObj).subscribe((resp: any) => {
     console.log("Added To Cart", resp)
   })
+
+   Swal.fire({
+    title: 'Added to cart!',
+    timer: 1500
+  });
+  }
+
+  else{
+    this.route.navigateByUrl("/login")
+  }
 }
+
+filter() {
+  let filterObj: Filter = {
+    vegeterian: this.vegetarian,
+    nuts: this.nuts,
+    spiciness: this.spiciness
+  }
+
+  this.api.getFiltered(filterObj).subscribe((resp2: any) => {
+    console.log(resp2)
+    this.productsArr = resp2
+  })
+}
+
+
+
 }

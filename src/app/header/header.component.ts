@@ -3,6 +3,7 @@ import { RouterModule } from '@angular/router';
 import { Product } from '../models/product';
 import { CommonModule } from '@angular/common';
 import { ApiService } from '../services/api.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-header',
@@ -19,11 +20,14 @@ export class HeaderComponent {
     }
   
     productsArr : Product[] = []
-    welcomeUsername!: string
-
-    greeting!: string
-    getFromChild(text : any){
-      this.greeting = text
+    
+    logout(){
+      localStorage.removeItem("token")
+      Swal.fire({
+      title: 'Logged Out',
+      timer: 1500
+    });
+      
     }
 
 }

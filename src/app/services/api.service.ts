@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { filter } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -20,8 +21,10 @@ export class ApiService {
     return this.http.get(`https://restaurant.stepprojects.ge/api/Categories/GetCategory/${id}`)
   }
 
-  getFiltered(){
-    return this.http.get(`https://restaurant.stepprojects.ge/api/Products/GetFiltered`)
+  getFiltered(filterObj : any){
+    return this.http.get(`https://restaurant.stepprojects.ge/api/Products/GetFiltered`, {
+      params : filterObj
+    })
   }
 
   cart(postObj : any){
@@ -34,6 +37,18 @@ export class ApiService {
 
   deleteProduct(id : number){
     return this.http.delete(`https://restaurant.stepprojects.ge/api/Baskets/DeleteProduct/${id}`)
+  }
+
+  updateCart(postObj1 : any){
+    return this.http.put(`https://restaurant.stepprojects.ge/api/Baskets/UpdateBasket`, postObj1)
+  }
+
+  register(postObj2 : any){
+    return this.http.post(`https://rentcar.stepprojects.ge/api/Users/register`, postObj2)
+  }
+
+  login(postObj3 : any){
+    return this.http.post(`https://rentcar.stepprojects.ge/api/Users/login`, postObj3)
   }
 
 }

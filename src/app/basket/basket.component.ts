@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, signal, Signal } from '@angular/core';
 import { ApiService } from '../services/api.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { ButtonComponent } from "../button/button.component";
+import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -13,9 +14,11 @@ import { ButtonComponent } from "../button/button.component";
 })
 export class BasketComponent {
 
-  constructor(private api: ApiService) {}
+  constructor(private api: ApiService, private route: Router) {}
 
   product : CartItem[] = []
+  itemAmount = signal(0)
+    
 
   ngOnInit(){
     this.api.getCartItems().subscribe((resp : any) =>{
@@ -28,8 +31,61 @@ export class BasketComponent {
     this.api.deleteProduct(id).subscribe(resp1 => {
       console.log("Deleted Item", resp1)
     })
+
+    Swal.fire({
+    title: 'Product Deleted',
+    timer: 1500
+  });
+  }
+
+  success(){
+    if(localStorage.getItem("token") != null || localStorage.getItem("token") != undefined){
+      this.route.navigateByUrl("/home")
+      alert("product is being delivered")
+    }
+
+    else{
+      Swal.fire({
+      title: 'Please Log In First',
+      timer: 1500
+    });
+    }
+  }
+ increase(item: CartItem) {
+    let newQuantity = item.quantity + 1;
+
+    let putObj = {
+      quantity: newQuantity,
+      price: item.price,
+      productId: item.product.id
+    };
+
+    this.api.updateCart(putObj).subscribe(resp => {
+      console.log(resp);
+      item.quantity = newQuantity;
+    });
+  }
+
+  decrease(item: CartItem) {
+    if (item.quantity <= 1) return;
+
+    let newQuantity = item.quantity - 1;
+
+    let putObj = {
+      quantity: newQuantity,
+      price: item.price,
+      productId: item.product.id
+    };
+
+    this.api.updateCart(putObj).subscribe(resp => {
+      console.log(resp);
+      item.quantity = newQuantity;
+    });
   }
 }
+
+
+
 
 export interface Product {
   categoryId: number;
