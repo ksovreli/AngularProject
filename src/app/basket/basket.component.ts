@@ -47,7 +47,6 @@ export class BasketComponent {
         text: 'Your product has been successfully delivered.',
         showConfirmButton: false,
         timer: 2000,
-        timerProgressBar: true,
         background: '#d4edda',
         iconColor: '#28a745',
       });

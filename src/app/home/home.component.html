@@ -23,9 +23,9 @@
         <label>Spiciness: {{rangeValue}}</label>
         <input type="range" [(ngModel)]="rangeValue" min="0" max="4">
     
-        <label><input type="checkbox" [(ngModel)]="nuts">No nuts</label>
+        <label><input type="checkbox" [(ngModel)]="Isnuts">No nuts</label>
     
-        <label><input type="checkbox" [(ngModel)]="vegetarian">Vegetarian only</label>
+        <label><input type="checkbox" [(ngModel)]="Isvegetarian">Vegetarian only</label>
     
     <app-button text="Reset"></app-button>
     <app-button (click)="filter()" text="Apply Filter"></app-button>

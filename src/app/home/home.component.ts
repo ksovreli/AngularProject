@@ -18,8 +18,8 @@ import { Filter } from '../models/filter';
 export class HomeComponent {
 
   rangeValue: number = 0
-  nuts: boolean = false
-  vegetarian: boolean = false
+  Isnuts: boolean = false
+  Isvegetarian: boolean = false
   spiciness: number = 0
   selectedCategoryId: number = 0
 
@@ -37,16 +37,27 @@ export class HomeComponent {
     })
 
     this.api.getCategory().subscribe((resp1: any) => {
-      console.log(resp1)
-      this.categoriesArr = resp1
-    })
+      console.log(resp1);
+      this.categoriesArr = [{ id: 0, name: 'All' }, ...resp1]
+    });
+
   }
   getCategoryId(id : number) {
     this.selectedCategoryId = id
-    this.api.getCategoryById(id).subscribe((resp: any) => {
+
+  if(this.selectedCategoryId == 0){
+    this.api.getAll().subscribe((resp : any) => {
+      this.productsArr = resp
+      console.log(resp)
+    })
+  } 
+  
+  else{
+    this.api.getCategoryById(id).subscribe((resp : any) => {
       console.log(resp.products)
       this.productsArr = resp.products
-  })
+    })
+  }
 }
 
 addToCart(productId: number, price: number) {
@@ -67,14 +78,25 @@ addToCart(productId: number, price: number) {
   }
 
   else{
+
+     Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'you must login before placing an order.',
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+        iconColor: '#721c24',
+      });
+
     this.route.navigateByUrl("/login")
   }
 }
 
 filter() {
   let filterObj: Filter = {
-    vegeterian: this.vegetarian,
-    nuts: this.nuts,
+    vegeterian: this.Isvegetarian,
+    nuts: this.Isnuts,
     spiciness: this.spiciness
   }
 
