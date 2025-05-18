@@ -157,7 +157,6 @@ main{
 
 h2{
   font-size: 36px;
-  line-height: 36px;
   color: #000000;
   font-weight: 700;
   font-family: "Roboto Slab", serif;
@@ -166,7 +165,7 @@ h2{
 }
 
 
-.banner {
+.banner{
   background-image: url('https://restaurant.stepprojects.ge/images/inner_banner.jpg');
   width: 100%;
   background-position: top;
@@ -176,7 +175,7 @@ h2{
   align-items: center;
   color: white;
   text-align: center;
-  margin-top: 100px;
+  background-attachment: fixed;
 }
 
 button{
@@ -185,14 +184,13 @@ button{
 
 h1{
   font-size: 30px;
-  line-height: 70px;
   color: #ffffff;
   font-weight: 800;
   text-align: center;
-  text-transform: capitalize;
   font-family: 'Roboto Slab', serif;
-  margin-bottom: 48px;
-  text-shadow: 0px 0px 26.97px rgba(0, 0, 0, 0.75)
+  text-transform: capitalize;
+  text-shadow: 0px 0px 26.97px rgba(0, 0, 0, 0.75);
+  margin-top: 75px;
 }
 
 @media screen and (max-width: 1050px){
@@ -243,5 +241,4 @@ h1{
 
 .active{
   border-bottom: 3px solid red;
-  font-weight: bold;
 }

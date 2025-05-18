@@ -22,9 +22,7 @@ export class ApiService {
   }
 
   getFiltered(filterObj : any){
-    return this.http.get(`https://restaurant.stepprojects.ge/api/Products/GetFiltered`, {
-      params : filterObj
-    })
+    return this.http.get(`https://restaurant.stepprojects.ge/api/Products/GetFiltered`, filterObj)
   }
 
   cart(postObj : any){

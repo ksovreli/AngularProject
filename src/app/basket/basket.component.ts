@@ -41,7 +41,17 @@ export class BasketComponent {
   success(){
     if(localStorage.getItem("token") != null || localStorage.getItem("token") != undefined){
       this.route.navigateByUrl("/home")
-      alert("product is being delivered")
+      Swal.fire({
+        icon: 'success',
+        title: 'Product Delivered!',
+        text: 'Your product has been successfully delivered.',
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+        background: '#d4edda',
+        iconColor: '#28a745',
+      });
+
     }
 
     else{

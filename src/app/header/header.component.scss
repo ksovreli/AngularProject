@@ -1,6 +1,6 @@
 header{
     width: 100%;
-    background-color: black;
+    background-color: rgba(0, 0, 0, 0.8);
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -16,8 +16,14 @@ header{
         ul{
             display: flex;
             list-style-type: none;
-            gap: 50px;
+            gap: 40px;
             justify-content: end;
+
+            .form{
+                display: flex;
+                gap: 40px;
+                margin-left: 50px;
+            }
 
             li{
                 font-weight: 700;
