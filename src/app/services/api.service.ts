@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { filter } from 'rxjs';
+import { Filter } from '../models/filter';
 
 @Injectable({
   providedIn: 'root'
@@ -21,8 +22,8 @@ export class ApiService {
     return this.http.get(`https://restaurant.stepprojects.ge/api/Categories/GetCategory/${id}`)
   }
 
-  getFiltered(filterObj : any){
-    return this.http.get(`https://restaurant.stepprojects.ge/api/Products/GetFiltered`, filterObj)
+  getFiltered(filterObj : Filter){
+    return this.http.get(`https://restaurant.stepprojects.ge/api/Products/GetFiltered?vegeterian=${filterObj.vegeterian}&nuts=${filterObj.nuts}&spiciness=${filterObj.spiciness}`)
   }
 
   cart(postObj : any){

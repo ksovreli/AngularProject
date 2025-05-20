@@ -38,7 +38,7 @@ export class HomeComponent {
 
     this.api.getCategory().subscribe((resp1: any) => {
       console.log(resp1);
-      this.categoriesArr = [{ id: 0, name: 'All' }, ...resp1]
+      this.categoriesArr = [{ id: 0, name: "All" }, ...resp1]
     });
 
   }
@@ -78,7 +78,6 @@ addToCart(productId: number, price: number) {
   }
 
   else{
-
      Swal.fire({
         icon: 'error',
         title: 'Oops...',
@@ -93,19 +92,30 @@ addToCart(productId: number, price: number) {
   }
 }
 
-filter() {
+filter(){
   let filterObj: Filter = {
     vegeterian: this.Isvegetarian,
     nuts: this.Isnuts,
-    spiciness: this.spiciness
+    spiciness: this.rangeValue
   }
-
+ 
   this.api.getFiltered(filterObj).subscribe((resp2: any) => {
     console.log(resp2)
     this.productsArr = resp2
   })
 }
 
+reset(){
+  this.Isvegetarian = false
+  this.Isnuts = false
+  this.rangeValue = 0
 
+  this.filter()
+
+    this.api.getAll().subscribe((resp : any) => {
+    console.log(resp)
+    this.productsArr = resp
+  })
+}
 
 }

@@ -1,4 +1,4 @@
-import { Component, signal, Signal } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { ApiService } from '../services/api.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -94,21 +94,19 @@ export class BasketComponent {
 }
 
 
-
-
-export interface Product {
-  categoryId: number;
-  id: number;
-  image: string;
-  name: string;
-  nuts: boolean;
-  price: number;
-  spiciness: number;
-  vegeterian: boolean;
+export class Product {
+  categoryId!: number
+  id!: number
+  image?: string
+  name?: string
+  nuts?: boolean
+  price?: number
+  spiciness?: number
+  vegeterian?: boolean
 }
 
-export interface CartItem {
-  price: number;
-  product: Product;
-  quantity: number;
+export class CartItem {
+  price?: number;
+  product!: Product;
+  quantity!: number;
 }

@@ -27,7 +27,7 @@
     
         <label><input type="checkbox" [(ngModel)]="Isvegetarian">Vegetarian only</label>
     
-    <app-button text="Reset"></app-button>
+    <app-button (click)="reset()" text="Reset"></app-button>
     <app-button (click)="filter()" text="Apply Filter"></app-button>
 
   

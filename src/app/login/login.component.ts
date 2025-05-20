@@ -17,9 +17,19 @@ export class LoginComponent {
   }
 
   phoneNumber ?: number
-  password = ''
+  password?: string
 
-  signIn() {
+  signIn(){
+    
+    if(this.phoneNumber == null || this.password == undefined){
+      Swal.fire({
+      icon: 'error',
+      title: 'Missing Fields',
+      text: 'Please fill in phone number, password, and email.',
+      timer: 2000
+    });
+    }
+        
     let postObj  = {
       phoneNumber: this.phoneNumber,
       password: this.password,
