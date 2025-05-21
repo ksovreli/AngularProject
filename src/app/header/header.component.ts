@@ -27,7 +27,5 @@ export class HeaderComponent {
       title: 'Logged Out',
       timer: 1500
     });
-      
     }
-
 }

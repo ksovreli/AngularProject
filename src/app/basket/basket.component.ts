@@ -17,8 +17,6 @@ export class BasketComponent {
   constructor(private api: ApiService, private route: Router) {}
 
   product : CartItem[] = []
-  itemAmount = signal(0)
-    
 
   ngOnInit(){
     this.api.getCartItems().subscribe((resp : any) =>{
@@ -60,37 +58,42 @@ export class BasketComponent {
     });
     }
   }
- increase(item: CartItem) {
-    let newQuantity = item.quantity + 1;
+ increase(item : CartItem) {
+  let newQuantity = item.quantity + 1
 
-    let putObj = {
-      quantity: newQuantity,
-      price: item.price,
-      productId: item.product.id
-    };
-
-    this.api.updateCart(putObj).subscribe(resp => {
-      console.log(resp);
-      item.quantity = newQuantity;
-    });
+  let putObj = {
+    quantity: newQuantity,
+    price: item.price,
+    productId: item.product.id
   }
 
-  decrease(item: CartItem) {
-    if (item.quantity <= 1) return;
+  this.api.updateCart(putObj).subscribe(resp => {
+    console.log(resp);
+    item.quantity = newQuantity;
+  })
+}
 
-    let newQuantity = item.quantity - 1;
-
-    let putObj = {
-      quantity: newQuantity,
-      price: item.price,
-      productId: item.product.id
-    };
-
-    this.api.updateCart(putObj).subscribe(resp => {
-      console.log(resp);
-      item.quantity = newQuantity;
-    });
+decrease(item : CartItem) {
+  if(item.quantity < 2){
+     Swal.fire({
+      title: 'Quantity cannot will be under 1',
+      icon: 'warning',
+     });
   }
+  let newQuantity = item.quantity - 1
+
+  let putObj = {
+    quantity: newQuantity,
+    price: item.price,
+    productId: item.product.id
+  }
+
+  this.api.updateCart(putObj).subscribe(resp => {
+    console.log(resp)
+    item.quantity = newQuantity
+  })
+}
+
 }
 
 
