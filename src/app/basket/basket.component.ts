@@ -76,7 +76,7 @@ export class BasketComponent {
 decrease(item : CartItem) {
   if(item.quantity < 2){
      Swal.fire({
-      title: 'Quantity cannot will be under 1',
+      title: 'Quantity cannot be less than 1',
       icon: 'warning',
      });
   }
