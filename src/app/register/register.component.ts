@@ -46,7 +46,7 @@ export class RegisterComponent {
       title: 'Successfully Registered',
       timer: 1500
     });
-      this.route.navigateByUrl("/login")
+      this.route.navigateByUrl("/login") 
     })
   }
   

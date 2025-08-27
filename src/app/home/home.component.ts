@@ -22,6 +22,10 @@ export class HomeComponent {
   Isvegetarian: boolean = false
   spiciness: number = 0
   selectedCategoryId: number = 0
+  searchText?: string
+
+
+
 
   constructor(private api : ApiService, private route : Router){
 
@@ -59,6 +63,13 @@ export class HomeComponent {
     })
   }
 }
+
+// search(){
+//   console.log(this.searchText)
+//     this.productsArr =this.productsArr.filter((product: Product) => 
+//       product.name?.toLowerCase().includes(this.searchText?.toLowerCase() || ''))
+//       console.log(this.productsArr)
+// }
 
 addToCart(productId: number, price: number) {
   if(localStorage.getItem("token") != null || localStorage.getItem("token") != undefined){
